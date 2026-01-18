@@ -1,4 +1,5 @@
 "use client";
+
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
