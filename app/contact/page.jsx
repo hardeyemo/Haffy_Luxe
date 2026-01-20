@@ -1,5 +1,7 @@
 "use client";
+
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -19,22 +21,35 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 px-6 py-16 flex items-center">
-      <div className="max-w-3xl mx-auto bg-white/80 backdrop-blur-lg shadow-xl rounded-2xl p-10 border border-gray-200">
-
-        <h1 className="text-4xl font-extrabold mb-4 text-green-700 tracking-wide">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen flex items-center px-6 py-16
+      bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364]"
+    >
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="max-w-3xl mx-auto bg-white/10 backdrop-blur-xl
+        border border-white/20 shadow-2xl rounded-3xl p-10"
+      >
+        {/* Title */}
+        <h1 className="text-4xl font-extrabold mb-4 text-green-300 tracking-wide">
           Contact Us
         </h1>
 
-        <p className="mb-8 text-gray-700 text-lg leading-relaxed">
-          Have a question or need support? Fill the form below and we’ll get back
-          to you as soon as possible.
+        <p className="mb-8 text-gray-200 text-lg leading-relaxed">
+          Have a question or need support? Send us a message and we’ll respond
+          promptly.
         </p>
 
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name */}
           <div>
-            <label className="block mb-2 font-medium text-gray-700 text-lg">
+            <label className="block mb-2 font-medium text-gray-200">
               Name
             </label>
             <input
@@ -43,13 +58,15 @@ export default function Contact() {
               value={form.name}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-green-600 shadow-sm transition"
+              className="w-full rounded-xl px-4 py-3 bg-black/40
+              text-white border border-white/20
+              focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block mb-2 font-medium text-gray-700 text-lg">
+            <label className="block mb-2 font-medium text-gray-200">
               Email
             </label>
             <input
@@ -58,13 +75,15 @@ export default function Contact() {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-green-600 shadow-sm transition"
+              className="w-full rounded-xl px-4 py-3 bg-black/40
+              text-white border border-white/20
+              focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
 
           {/* Message */}
           <div>
-            <label className="block mb-2 font-medium text-gray-700 text-lg">
+            <label className="block mb-2 font-medium text-gray-200">
               Message
             </label>
             <textarea
@@ -73,20 +92,24 @@ export default function Contact() {
               value={form.message}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-green-600 shadow-sm transition"
+              className="w-full rounded-xl px-4 py-3 bg-black/40
+              text-white border border-white/20
+              focus:outline-none focus:ring-2 focus:ring-green-400 transition"
             />
           </div>
 
           {/* Button */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             type="submit"
-            className="w-full bg-green-700 text-white py-3 rounded-xl text-lg font-semibold hover:bg-green-800 shadow-md hover:shadow-lg transition"
+            className="w-full bg-green-500 text-black py-3 rounded-xl
+            text-lg font-bold shadow-lg hover:bg-green-400 transition"
           >
             Send Message
-          </button>
+          </motion.button>
         </form>
-
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
